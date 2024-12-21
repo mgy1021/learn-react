@@ -4,16 +4,24 @@ interface RefProps {
   focus: () => void;
 }
 
-const Children: React.ForwardRefRenderFunction<RefProps> = (props, ref) => {
+interface ChildrenProps {
+  name: string;
+}
+
+const Children: React.ForwardRefRenderFunction<RefProps, ChildrenProps> = (
+  props,
+  ref
+) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useImperativeHandle(
+  useImperativeHandle<RefProps, { ccc: string } & RefProps>(
     ref,
     () => {
       return {
         focus() {
           inputRef.current.focus();
         },
+        ccc: "ccc",
       };
     },
     [inputRef]
@@ -21,12 +29,13 @@ const Children: React.ForwardRefRenderFunction<RefProps> = (props, ref) => {
 
   return (
     <div>
+      <div>{props.name}</div>
       <input ref={inputRef} type="text" />
     </div>
   );
 };
 
-const WrapedChildren = React.forwardRef(Children);
+const WrapedChildren = React.forwardRef<RefProps, ChildrenProps>(Children);
 
 function App() {
   const inputRef = useRef<RefProps>(null);
@@ -39,7 +48,7 @@ function App() {
 
   return (
     <div>
-      <WrapedChildren ref={inputRef} />
+      <WrapedChildren name="mgy" ref={inputRef} />
       <div
         onClick={() => {
           numRef.current += 1;
