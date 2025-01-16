@@ -7,10 +7,10 @@ interface CalendarProps {
 }
 
 function Calendar(props: CalendarProps) {
-  const { value: propsValue, defaultValue, onChange } = props;
+  const { value, defaultValue, onChange } = props;
 
   const [mergedValue, setValue] = useMergeState(new Date(), {
-    value: propsValue,
+    value,
     defaultValue,
     onChange,
   });
@@ -27,21 +27,21 @@ function Calendar(props: CalendarProps) {
           changeValue(new Date("2024-5-1"));
         }}
       >
-        2023-5-1
+        2024-5-1
       </div>
       <div
         onClick={() => {
           changeValue(new Date("2024-5-2"));
         }}
       >
-        2023-5-2
+        2024-5-2
       </div>
       <div
         onClick={() => {
           changeValue(new Date("2024-5-3"));
         }}
       >
-        2023-5-3
+        2024-5-3
       </div>
     </div>
   );

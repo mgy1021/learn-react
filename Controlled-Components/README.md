@@ -1,50 +1,9 @@
-# React + TypeScript + Vite
+## 受控组件与非受控组件
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+受控组件：通过代码能够控制的组件，也就是通过修改 value 的方式控制组件，然后在 onChange 里面 setValue 更新状态，让组件重新渲染。达到值的更新效果。
 
-Currently, two official plugins are available:
+非受控组件：代码无法控制，只能有用户输入改变其值。但是可以设置初始值，defaultValue。在 onChange 里获取最新的值。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+一般情况下，我们使用非受控组件就可以了，使用非受控组件有一个优点就是，当用户修改组件的值时，组件不需要重新渲染。而受控组件，每个值变化时，组件都会重新渲染。
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 如何实现一个输入框组件？同时支持受控与非受控模式？
