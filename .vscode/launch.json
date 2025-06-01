@@ -10,7 +10,7 @@
             "name": "针对 localhost 启动 Chrome",
             "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}",
-            "userDataDir": false
+            // "userDataDir": false
         }
     ]
 }

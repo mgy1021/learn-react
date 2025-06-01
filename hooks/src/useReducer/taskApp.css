@@ -1,0 +1,15 @@
+.input{
+    margin-right: 4px;
+}
+
+.task-list{
+    margin-top: 12px;
+}
+
+.task{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 4px;
+}
